@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateTaskWindow</class>
+ <widget class="QDialog" name="CreateTaskWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>316</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Создание задачи</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTextEdit" name="titleTaskEdit"/>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="descriptionTaskEdit"/>
+   </item>
+   <item>
+    <widget class="QDateTimeEdit" name="deadlineEdit">
+     <property name="displayFormat">
+      <string>yyyy-MM-dd HH:mm:ss</string>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="createTaskButton">
+     <property name="text">
+      <string>Создать задачу</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="exitCreateTaskButton">
+     <property name="text">
+      <string>Закрыть</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ResponseWindow</class>
+ <widget class="QDialog" name="ResponseWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TaskHub</string>
+  </property>
+  <property name="TaskHub" stdset="0">
+   <string>Отклик на задачу</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTextEdit" name="responseTextEdit">
+     <property name="placeholderText">
+      <string>Введите ваш отклик...</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="sendResponseButton">
+     <property name="text">
+      <string>Отправить отклик</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="cancelButton">
+     <property name="text">
+      <string>Отмена</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

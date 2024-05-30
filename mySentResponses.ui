@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MySentResponsesWindow</class>
+ <widget class="QDialog" name="MySentResponsesWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Мои отклики</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QListWidget" name="responseListWidget"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="detailsButton">
+     <property name="text">
+      <string>Подробнее</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="submitButton">
+     <property name="text">
+      <string>Сдать работу</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="backButton">
+     <property name="text">
+      <string>Назад</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

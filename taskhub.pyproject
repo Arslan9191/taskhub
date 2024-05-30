@@ -1,0 +1,20 @@
+{
+    "files": [
+        "createTask.ui",
+        "database_operations.py",
+        "main.py",
+        "menu.ui",
+        "myResponses.ui",
+        "mySentResponses.ui",
+        "registration.ui",
+        "report.ui",
+        "reportView.ui",
+        "responseDetails.ui",
+        "responseWindow.ui",
+        "sendResponseMenu.ui",
+        "submitReport.ui",
+        "taskDetails.ui",
+        "viewMyTask.ui",
+        "viewPublicTask.ui"
+    ]
+}
