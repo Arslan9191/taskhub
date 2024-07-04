@@ -5,6 +5,7 @@ from PyQt5.QtCore import Qt, pyqtSignal, QDateTime
 from PyQt5.uic import loadUi
 from datetime import datetime
 import sqlite3
+import qdarkstyle
 
 # Определяем путь к директории, где находится текущий скрипт
 current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -17,6 +18,7 @@ def truncate_text(text, max_length=30):
         return text[:max_length] + "..."
     return text
 
+# Окно регистрации
 class RegistrationWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -69,6 +71,7 @@ class RegistrationWindow(QDialog):
             QMessageBox.warning(self, "Ошибка", "Неверное имя пользователя или пароль.")
         conn.close()
 
+# Окно меню
 class MenuWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -114,6 +117,7 @@ class MenuWindow(QDialog):
         self.my_sent_responses_window = MySentResponsesWindow(self.user_id, self)
         self.my_sent_responses_window.show()
 
+# Окно создания задачи
 class CreateTaskWindow(QDialog):
     task_saved = pyqtSignal()
 
@@ -180,6 +184,7 @@ class CreateTaskWindow(QDialog):
         if hasattr(self.parent_window, 'view_public_task_window'):
             self.parent_window.view_public_task_window.load_tasks()
 
+# Окно просмотра своих созданных задач
 class ViewMyTaskWindow(QDialog):
     def __init__(self, parent=None, create_task_window=None):
         super().__init__(parent)
@@ -217,6 +222,7 @@ class ViewMyTaskWindow(QDialog):
         self.hide()
         self.parent_window.show()
 
+# Виджет управления созданными нами задачами
 class TaskItemWidget(QWidget):
     def __init__(self, task, parent_window):
         super().__init__()
@@ -293,6 +299,7 @@ class TaskItemWidget(QWidget):
         self.responses_window = MyResponsesWindow(self.task_id, self)
         self.responses_window.show()
 
+# Окно просмотра публичных задач
 class ViewPublicTaskWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -331,6 +338,7 @@ class ViewPublicTaskWindow(QDialog):
         self.hide()  # Скрываем текущее окно
         self.parent_window.show()  # Показываем родительское окно
 
+# Виджет публичных задач созданными другими пользователями
 class PublicTaskItemWidget(QWidget):
     def __init__(self, task, parent_window):
         super().__init__()
@@ -373,12 +381,11 @@ class PublicTaskItemWidget(QWidget):
         self.response_window = ResponseWindow(self.task_id, self.parent_window.user_id, self)
         self.response_window.show()
 
+# Окно отклика на задачу
 class ResponseWindow(QDialog):
     def __init__(self, task_id, user_id, parent=None):
         super().__init__(parent)
         ui_path = os.path.join(current_directory, "responseWindow.ui")
-        if not os.path.exists(ui_path):
-            raise FileNotFoundError(f"UI file not found: {ui_path}")
         loadUi(ui_path, self)
         self.task_id = task_id
         self.user_id = user_id
@@ -430,6 +437,7 @@ class ResponseWindow(QDialog):
         QMessageBox.information(self, "Успех", "Ваш отклик успешно отправлен!")
         self.close()
 
+# Окно откликов к созданным нами задачам
 class MyResponsesWindow(QDialog):
     def __init__(self, task_id, parent=None):
         super().__init__(parent)
@@ -631,6 +639,7 @@ class MyResponsesWindow(QDialog):
         self.close()
         self.parent_window.show()
 
+# Окно просмотра отчётов к задачам
 class ReportViewWindow(QDialog):
     def __init__(self, report_text, parent=None):
         super().__init__(parent)
@@ -676,6 +685,7 @@ class ReportWindow(QDialog):
         self.close()
         self.parent().load_responses()
 
+# Окно подробного просмотра задач
 class TaskDetailsWindow(QDialog):
     def __init__(self, title, description, deadline, creation_time, parent=None):
         super().__init__(parent)
@@ -695,6 +705,7 @@ class TaskDetailsWindow(QDialog):
         if self.parent():  # Check if parent exists
             self.parent().show()
 
+# Окно отправленных нами откликов
 class MySentResponsesWindow(QDialog):
     def __init__(self, user_id, parent=None):
         super().__init__(parent)
@@ -894,6 +905,7 @@ class MySentResponsesWindow(QDialog):
         self.close()  # Закрываем текущее окно
         self.parent_window.show()  # Показываем родительское окно (главное меню)
 
+# Окно просмотра деталей откликов
 class ResponseDetailsWindow(QDialog):
     def __init__(self, title, description, deadline, parent=None):
         super().__init__(parent)
@@ -922,6 +934,7 @@ class ResponseDetailsWindow(QDialog):
 
 def main():
     app = QApplication(sys.argv)
+    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     registration_window = RegistrationWindow()
     registration_window.show()
     sys.exit(app.exec_())
